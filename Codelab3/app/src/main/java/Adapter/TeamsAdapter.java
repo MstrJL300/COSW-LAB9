@@ -1,6 +1,8 @@
 package Adapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.Parcel;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +15,16 @@ import com.example.ba.codelab3.Team;
 
 import java.util.List;
 
+import it.sephiroth.android.library.picasso.Picasso;
+
 /**
  * Created by jose on 16/11/16.
+ *
  */
 
 public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder> {
 
+    //This list stores the teams.
     private final List<Team> teams;
     private Context context;
 
@@ -39,12 +45,16 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder> 
         Team team = teams.get(position);
         viewHolder.name.setText((team.getName()));
         viewHolder.shortName.setText((team.getShortName()));
-        Picasso.with(context).load(team.getImageUrl()).into(viewHolder.logo);
+        Picasso.with(context).load(String.valueOf(team.getImageUrl())).into(viewHolder.logo);
     }
 
     @Override
     public int getItemCount() {return teams.size();}
 
+    /**
+     * The class is created inside to hold eference to UI elements that represent a Team in
+     * the model.
+     */
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name;

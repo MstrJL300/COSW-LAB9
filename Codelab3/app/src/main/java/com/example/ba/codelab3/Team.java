@@ -6,6 +6,9 @@ import java.net.URL;
  * Created by jose on 16/11/16.
  */
 
+/**
+ * Class that contains going to contain the structure of the data to download.
+ */
 public class Team {
 
     int id;
